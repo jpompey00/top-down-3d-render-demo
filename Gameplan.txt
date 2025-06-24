@@ -1,0 +1,12 @@
+8 way movement 
+	Move and rotate in the direction the Vectors are pointing
+	W -> move up, direction up
+	WD -> Move up right, direction up right
+	D -> move right, direction right
+	
+	
+	check rotation of the object.
+	swag
+	
+	
+	use OnBodyEntered for when detecting a staticBody2D

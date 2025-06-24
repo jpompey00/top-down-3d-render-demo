@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2tg5v1cy6o8"]
+
+[ext_resource type="Texture2D" uid="uid://dw0w2bch43oau" path="res://assets/Player.png" id="1_0s0jk"]
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_fy17b"]
+[ext_resource type="PackedScene" uid="uid://wc1m3i7crx7d" path="res://scenes/enviornment/wall_1.tscn" id="1_hjiwl"]
+[ext_resource type="Script" path="res://scripts/Movement.cs" id="3_2o046"]
+[ext_resource type="Texture2D" uid="uid://deqbantk8qsre" path="res://assets/PlayerArriw.png" id="4_tv4c6"]
+[ext_resource type="Script" path="res://scripts/VisionLine.cs" id="5_dbp1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j3ix"]
+size = Vector2(57, 55)
+
+[node name="Top Down Scene" type="Node2D"]
+
+[node name="Player CharacterBody" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(594, 297)
+scale = Vector2(0.45, 0.45)
+script = ExtResource("3_2o046")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player CharacterBody"]
+position = Vector2(-13.3333, -75.5556)
+polygon = PackedVector2Array(33.3334, 6.66669, 0, 0, -37.7778, 8.88892, -64.4445, 31.1111, -77.7778, 46.6667, -88.8889, 86.6667, -84.4445, 115.556, -68.8889, 146.667, -37.7778, 171.111, -6.66663, 180, 24.4445, 177.778, 64.4445, 155.556, 86.6666, 117.778, 88.8889, 73.3334, 73.3334, 37.7778, 53.3334, 17.7778)
+
+[node name="Player Visuals" type="Node2D" parent="Player CharacterBody"]
+script = ExtResource("1_fy17b")
+
+[node name="Player Sprite" type="Sprite2D" parent="Player CharacterBody/Player Visuals"]
+texture = ExtResource("1_0s0jk")
+
+[node name="Directional Arrow" type="Sprite2D" parent="Player CharacterBody/Player Visuals"]
+position = Vector2(111.111, 4.44444)
+rotation = 1.56852
+scale = Vector2(0.331111, 0.331111)
+texture = ExtResource("4_tv4c6")
+
+[node name="Vision Cone" type="Area2D" parent="Player CharacterBody"]
+rotation = 1.5708
+script = ExtResource("5_dbp1w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player CharacterBody/Vision Cone"]
+position = Vector2(19.9999, 2.22229)
+build_mode = 1
+polygon = PackedVector2Array(-15.556, -77.7775, -151.112, -326.666, 82.2209, -328.889)
+
+[node name="Enviornment" type="Node" parent="."]
+
+[node name="Wall-1" parent="Enviornment" instance=ExtResource("1_hjiwl")]
+position = Vector2(577, 59)
+scale = Vector2(2.08167, 0.331363)
+
+[node name="Wall-4" parent="Enviornment" instance=ExtResource("1_hjiwl")]
+position = Vector2(579, 534)
+scale = Vector2(2.07758, 0.331363)
+
+[node name="Wall-2" parent="Enviornment" instance=ExtResource("1_hjiwl")]
+position = Vector2(338, 298)
+rotation = 1.5708
+scale = Vector2(2.08167, 0.331363)
+
+[node name="Wall-3" parent="Enviornment" instance=ExtResource("1_hjiwl")]
+position = Vector2(819, 298)
+rotation = 1.5708
+scale = Vector2(2.08167, 0.331363)
+
+[node name="Test Colission" type="Node2D" parent="Enviornment"]
+position = Vector2(427, 183)
+
+[node name="ColorRect" type="ColorRect" parent="Enviornment/Test Colission"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="Enviornment/Test Colission"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enviornment/Test Colission/Area2D"]
+position = Vector2(18.5, 17.5)
+shape = SubResource("RectangleShape2D_2j3ix")
+
+[connection signal="area_entered" from="Player CharacterBody/Vision Cone" to="Player CharacterBody" method="onAreaEntered"]
+[connection signal="body_entered" from="Player CharacterBody/Vision Cone" to="Player CharacterBody" method="onBodyEntered"]
