@@ -42,7 +42,7 @@ position = Vector2(19.9999, 2.22229)
 build_mode = 1
 polygon = PackedVector2Array(-15.556, -77.7775, -151.112, -326.666, 82.2209, -328.889)
 
-[node name="Enviornment" type="Node" parent="."]
+[node name="Enviornment" type="Node2D" parent="."]
 
 [node name="Wall-1" parent="Enviornment" instance=ExtResource("1_hjiwl")]
 position = Vector2(577, 59)

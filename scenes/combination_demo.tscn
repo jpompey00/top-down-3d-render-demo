@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cit6wy3mwi11c"]
+
+[ext_resource type="PackedScene" uid="uid://o5c2s55af6e4" path="res://scenes/3d_space_demo.tscn" id="1_h7rln"]
+[ext_resource type="PackedScene" uid="uid://d2tg5v1cy6o8" path="res://scenes/play_scene_demo.tscn" id="2_fv5c2"]
+
+[node name="combination_demo" type="Node"]
+
+[node name="3d_space_demo" parent="." instance=ExtResource("1_h7rln")]
+
+[node name="Control" type="Control" parent="3d_space_demo"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 724.0
+offset_top = 239.0
+offset_right = 764.0
+offset_bottom = 279.0
+scale = Vector2(0.506, 0.5)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="3d_space_demo/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="3d_space_demo/Control/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(900, 600)
+render_target_update_mode = 4
+
+[node name="Top Down Scene" parent="3d_space_demo/Control/SubViewportContainer/SubViewport" instance=ExtResource("2_fv5c2")]
