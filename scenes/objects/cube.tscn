@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7ar6kaj1sk36"]
+[gd_scene load_steps=3 format=3 uid="uid://b7ar6kaj1sk36"]
+
+[ext_resource type="Script" path="res://scripts/Cube.cs" id="1_i770k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_aqdrr"]
 
 [node name="Cube" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.00179005, -5.96046e-08, -0.0081749)
+script = ExtResource("1_i770k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_aqdrr")

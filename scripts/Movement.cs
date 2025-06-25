@@ -4,7 +4,7 @@ using Godot;
 public partial class Movement : CharacterBody2D
 {
 
-
+	TopDownScene topDown; 
 
 	[Export]
 	public int Speed { get; set; } = 300;
@@ -12,7 +12,8 @@ public partial class Movement : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
+		topDown = GetNode<TopDownScene>("../../Top Down Scene");
+		// GD.Print(topDown);
 	}
 
 	public void GetInput()
@@ -46,8 +47,12 @@ public partial class Movement : CharacterBody2D
 			if (!node2D.GetParent().GetGroups().Equals(null))
 			{
 				//detects a wall
-				//node2D.GetParent().GetGroups()[0]
+				//node2D.GetParent().GetGroups()[0]*
 				GD.Print(node2D.GetParent().GetGroups()[0]);
+				if (node2D.GetParent().GetGroups()[0].Equals("Wall"))
+				{
+					
+				}
 			}
 		}
 		

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2tg5v1cy6o8"]
+[gd_scene load_steps=9 format=3 uid="uid://d2tg5v1cy6o8"]
 
 [ext_resource type="Texture2D" uid="uid://dw0w2bch43oau" path="res://assets/Player.png" id="1_0s0jk"]
+[ext_resource type="Script" path="res://scripts/TopDownScene.cs" id="1_51hwe"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_fy17b"]
 [ext_resource type="PackedScene" uid="uid://wc1m3i7crx7d" path="res://scenes/enviornment/wall_1.tscn" id="1_hjiwl"]
 [ext_resource type="Script" path="res://scripts/Movement.cs" id="3_2o046"]
@@ -11,6 +12,7 @@
 size = Vector2(57, 55)
 
 [node name="Top Down Scene" type="Node2D"]
+script = ExtResource("1_51hwe")
 
 [node name="Player CharacterBody" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(594, 297)
@@ -75,5 +77,5 @@ offset_bottom = 40.0
 position = Vector2(18.5, 17.5)
 shape = SubResource("RectangleShape2D_2j3ix")
 
-[connection signal="area_entered" from="Player CharacterBody/Vision Cone" to="Player CharacterBody" method="onAreaEntered"]
-[connection signal="body_entered" from="Player CharacterBody/Vision Cone" to="Player CharacterBody" method="onBodyEntered"]
+[connection signal="body_entered" from="Player CharacterBody/Vision Cone" to="." method="onBodyEntered"]
+[connection signal="body_exited" from="Player CharacterBody/Vision Cone" to="." method="onBodyExited"]

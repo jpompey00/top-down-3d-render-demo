@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://o5c2s55af6e4"]
+[gd_scene load_steps=11 format=3 uid="uid://o5c2s55af6e4"]
 
 [ext_resource type="Script" path="res://scripts/Player3D.cs" id="1_3qt3q"]
 [ext_resource type="Texture2D" uid="uid://cony3ud621k48" path="res://assets/V_Proto_Comission_1.jpg" id="1_vithn"]
+[ext_resource type="Script" path="res://scripts/ThreeDGameScene.cs" id="1_vw80o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4i5bc"]
 size = Vector3(60, 2, 60)
@@ -29,6 +30,7 @@ texture_filter = 0
 size = Vector3(50, 25, 1)
 
 [node name="3d_space_demo" type="Node3D"]
+script = ExtResource("1_vw80o")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
